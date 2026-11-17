@@ -16,34 +16,43 @@ From your **Hosyond 45-in-1 Kit** & **Starter Kit**:
 
 ---
 
-## Wiring Diagram
+## Pin Connections & Wiring Guide
 
-> **Important:** Always wire your sensors with the Pico W **unplugged from USB**.
+> **Important:** Always wire your circuit with the Pico W **unplugged from USB**.
 
-```
-Pico W (Physical Pin #)     ->   Module / Component Pin
-----------------------------------------------------------------------------------
-Pin 36 (3V3 OUT)            ->   Breadboard Red (+) Power Rail
-Pin 38 (GND)                ->   Breadboard Blue (-) Ground Rail
+### 1. Power Distribution
+| From Pico W Pin | Label | Wire To | Purpose |
+| :--- | :--- | :--- | :--- |
+| **Pin 36** | `3V3 OUT` | Breadboard Red (+) Power Rail | Main 3.3V power bus for all sensors |
+| **Pin 38** | `GND` | Breadboard Blue (-) Ground Rail | Common circuit ground |
 
-Temp and Humidity Module (DHT11, Row 2, #13):
-- 'S' / 'Out' (Signal)      ->   Pico Physical Pin 20 (GP15)
-- '+' (Middle pin, VCC)     ->   Breadboard (+) Rail [3.3V]
-- '-' (GND)                 ->   Breadboard (-) Rail [GND]
+---
 
-Photoresistor Module (KY-018, Row 3, #22):
-- 'S' (Right pin, Signal)   ->   Pico Physical Pin 31 (GP26 / ADC0)
-- '+' (Middle pin, VCC)     ->   Breadboard (+) Rail [3.3V]
-- '-' (Left pin, GND)       ->   Breadboard (-) Rail [GND]
+### 2. Module Pin Connections
 
-RGB LED Module (KY-016 Row 5, #41 or KY-009 Row 5, #39):
-- '-' (GND)                 ->   Breadboard (-) Rail [GND]
-- 'R' (Red)                 ->   Pico Physical Pin 21 (GP16)
-- 'G' (Green)               ->   Pico Physical Pin 22 (GP17)
-- 'B' (Blue)                ->   Pico Physical Pin 24 (GP18)
-```
+#### Temp & Humidity Sensor (`DHT11`, Row 2, #13)
+| PCB Pin Label | Pin Location on Module | Connects To | Pico W Pin Details | Function |
+| :--- | :--- | :--- | :--- | :--- |
+| **`+`** / `VCC` | Middle pin | Breadboard Red (+) Rail | `3.3V Power` | Sensor power supply |
+| **`-`** / `GND` | Left/Right pin (marked `-`) | Breadboard Blue (-) Rail | `Common GND` | Ground |
+| **`S`** / `Out` | Signal pin | **Pico Physical Pin 20** | **`GP15`** | Digital bi-directional data line |
 
-*(Note: If you use individual discrete LEDs from the starter kit instead of the module, place a 220Ω resistor between each Pico GPIO pin and the LED's longer anode leg, and connect all shorter cathode legs to GND).*
+#### Photoresistor / Light Sensor (`KY-018`, Row 3, #22)
+| PCB Pin Label | Pin Location on Module | Connects To | Pico W Pin Details | Function |
+| :--- | :--- | :--- | :--- | :--- |
+| **`+`** | Middle pin | Breadboard Red (+) Rail | `3.3V Power` | Voltage divider power |
+| **`-`** | Left pin (marked `-`) | Breadboard Blue (-) Rail | `Common GND` | Ground reference |
+| **`S`** | Right pin (marked `S`) | **Pico Physical Pin 31** | **`GP26 / ADC0`** | Analog voltage output (0–65535) |
+
+#### Full-Color RGB LED Module (`KY-016` Row 5, #41 or `KY-009` Row 5, #39)
+| PCB Pin Label | Pin Location on Module | Connects To | Pico W Pin Details | Function |
+| :--- | :--- | :--- | :--- | :--- |
+| **`-`** | Ground pin (marked `-`) | Breadboard Blue (-) Rail | `Common GND` | Common cathode ground |
+| **`R`** | Red channel pin | **Pico Physical Pin 21** | **`GP16`** | Red LED control |
+| **`G`** | Green channel pin | **Pico Physical Pin 22** | **`GP17`** | Green LED control |
+| **`B`** | Blue channel pin | **Pico Physical Pin 24** | **`GP18`** | Blue LED control |
+
+*(Note: If using individual discrete LEDs from your starter kit instead of the module: connect each Pico GPIO pin through a 220Ω resistor to the longer anode leg of an LED, and connect all shorter cathode legs to the Blue GND rail).*
 
 ---
 
@@ -54,8 +63,8 @@ RGB LED Module (KY-016 Row 5, #41 or KY-009 Row 5, #39):
 3. Plug in your Pico W via USB.
 4. Open [`main.py`](./main.py) and press **`Ctrl+F5`** (or click **MicroPico: Run current file** in the status bar).
 5. The VS Code terminal will output the Pico's IP address:
-   ```
+   ```text
    Connecting to Wi-Fi: MyHomeWiFi ...
    Dashboard ready at http://192.168.1.111
    ```
-6. Open that URL in your phone or PC browser to view your live climate station dashboard.
+6. Open that URL on any phone or browser connected to the same Wi-Fi network to view your live climate station!

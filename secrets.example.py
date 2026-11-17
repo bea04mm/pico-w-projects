@@ -4,3 +4,6 @@
 
 WIFI_SSID = "YOUR_WIFI_SSID_HERE"
 WIFI_PASSWORD = "YOUR_WIFI_PASSWORD_HERE"
+
+# Project 02 (Optional): Discord Webhook URL for intrusion alerts (leave empty if unused)
+DISCORD_WEBHOOK_URL = ""
