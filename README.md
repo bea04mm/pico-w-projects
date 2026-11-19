@@ -13,6 +13,7 @@ Projects are documented, tested, and published one at a time.
 | **01** | [`01-wifi-climate-station`](./01-wifi-climate-station/) | **Wi-Fi Climate Station** | DHT11 Temp/Humidity, Photoresistor (KY-018), RGB LED (KY-016/009) | Interactive live web dashboard with temperature, humidity, ambient light %, and color-coded status. |
 | **02** | [`02-security-alarm-system`](./02-security-alarm-system/) | **Security Alarm System** | PIR (HC-SR501) / Shock (KY-002), Active Buzzer (KY-012), Button (KY-004), LEDs | Physical & web arming/disarming, siren alarms, event logs, and optional Discord webhooks. |
 | **03** | [`03-smart-plant-monitor`](./03-smart-plant-monitor/) | **Smart Plant Monitor** | Water Level Sensor (#9), Active Buzzer (KY-012), 3x LEDs | Automated soil moisture monitoring with web threshold slider and audio alerts. |
+| **04** | [`04-universal-ir-remote`](./04-universal-ir-remote/) | **Universal Smart IR Remote** | IR Receiver (VS1838B), IR Emission LED (KY-005) | Web-based universal remote with signal capture, 38kHz PWM carrier blaster, and persistent flash storage. |
 
 *(More projects will be added incrementally).*
 
@@ -51,14 +52,14 @@ This hardware reference documents the sensors, pinouts, and capabilities across 
 13. **Temp and Humidity** (`DHT11`): 3 pins (`+` [3.3V], `out`/`S` [Signal], `-` [GND]). Digital temperature & humidity sensor. *Used in [`01-wifi-climate-station`](./01-wifi-climate-station/)*.
 14. **Tracking**: 3 pins (`VCC`, `GND`, `OUT`). Infrared reflectance sensor for black/white line following.
 15. **Light Blocking** (`KY-010`): 3 pins (`S`, middle pin, `-`). Slotted optical photo-interrupter.
-16. **IR Receiver** (`VS1838B`): 3 pins (`-`, `+`, `S`). Receives 38kHz infrared remote control signals.
+16. **IR Receiver** (`VS1838B`): 3 pins (`-`, `+`, `S`). Receives 38kHz infrared remote control signals. *Used in [`04-universal-ir-remote`](./04-universal-ir-remote/)*.
 17. **Ultrasonic Module** (`HC-SR04`): 4 pins (`VCC` [5V], `Trig`, `Echo` [use voltage divider to 3.3V], `GND`). Distance sensor.
 18. **Power Supply Module**: Dual 3.3V / 5V breadboard power regulator module with DC barrel jack and USB port.
 
 ### Row 3 (Modules 19 – 27)
 19. **Avoidance**: 3/4 pins (`VCC`, `GND`, `OUT`). Active infrared obstacle avoidance sensor.
 20. **Analog Temp** (`KY-013`): 3 pins (`S` [Analog], `+` [3.3V], `-` [GND]). NTC thermistor analog bridge.
-21. **IR Emission** (`KY-005`): 3 pins (`S` [Signal], middle pin [empty], `-` [GND]). Infrared 38kHz emitter LED.
+21. **IR Emission** (`KY-005`): 3 pins (`S` [Signal], middle pin [empty], `-` [GND]). Infrared 38kHz emitter LED. *Used in [`04-universal-ir-remote`](./04-universal-ir-remote/)*.
 22. **Photoresistor** (`KY-018`): 3 pins (`S` [Signal], `+` [3.3V], `-` [GND]). Light-dependent resistor (LDR). *Used in [`01-wifi-climate-station`](./01-wifi-climate-station/)*.
 23. **7 Color Flash** (`KY-034`): 3 pins (`S`, middle pin, `-`). Auto-cycling color changing LED.
 24. **18B20 Temp** (`DS18B20`): 3 pins (`S` [1-Wire Data], `+` [3.3V], `-` [GND]). High-accuracy digital 1-wire thermometer.
@@ -102,5 +103,5 @@ This hardware reference documents the sensors, pinouts, and capabilities across 
 ### 2. Run with VS Code & MicroPico
 1. Plug your Raspberry Pi Pico W into your computer via a micro-USB data cable.
 2. Ensure the **MicroPico** extension is connected (status bar indicates `Pico Connected`).
-3. Open any project's `main.py` (e.g., [`01-wifi-climate-station/main.py`](./01-wifi-climate-station/main.py), [`02-security-alarm-system/main.py`](./02-security-alarm-system/main.py), or [`03-smart-plant-monitor/main.py`](./03-smart-plant-monitor/main.py)) and press **`Ctrl+F5`** (or click **Run current file**).
+3. Open any project's `main.py` (e.g., [`01-wifi-climate-station/main.py`](./01-wifi-climate-station/main.py), [`02-security-alarm-system/main.py`](./02-security-alarm-system/main.py), [`03-smart-plant-monitor/main.py`](./03-smart-plant-monitor/main.py), or [`04-universal-ir-remote/main.py`](./04-universal-ir-remote/main.py)) and press **`Ctrl+F5`** (or click **Run current file**).
 4. The Pico will connect to your Wi-Fi network and print its IP address in the terminal. Open that IP address in any browser on the same Wi-Fi network!
