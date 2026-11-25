@@ -14,6 +14,7 @@ Projects are documented, tested, and published one at a time.
 | **02** | [`02-security-alarm-system`](./02-security-alarm-system/) | **Security Alarm System** | PIR (HC-SR501) / Shock (KY-002), Active Buzzer (KY-012), Button (KY-004), LEDs | Physical & web arming/disarming, siren alarms, event logs, and optional Discord webhooks. |
 | **03** | [`03-smart-plant-monitor`](./03-smart-plant-monitor/) | **Smart Plant Monitor** | Water Level Sensor (#9), Active Buzzer (KY-012), 3x LEDs | Automated soil moisture monitoring with web threshold slider and audio alerts. |
 | **04** | [`04-universal-ir-remote`](./04-universal-ir-remote/) | **Universal Smart IR Remote** | IR Receiver (VS1838B), IR Emission LED (KY-005) | Web-based universal remote with signal capture, 38kHz PWM carrier blaster, and persistent flash storage. |
+| **05** | [`05-ble-game-controller`](./05-ble-game-controller/) | **Wireless Gamepad & Media Controller** | Joystick (#10), 2x Buttons (#37) | Dual-axis analog stick navigation, 3 action buttons, and 60FPS live radar canvas visualizer. |
 
 *(More projects will be added incrementally).*
 
@@ -46,7 +47,7 @@ This hardware reference documents the sensors, pinouts, and capabilities across 
 9. **Water Level Sensor Module**: 3 pins (`+` [3.3V], `-` [GND], `S` [Signal]). Analog immersion and water depth sensor. *Used in [`03-smart-plant-monitor`](./03-smart-plant-monitor/)*.
 
 ### Row 2 (Modules 10 – 18)
-10. **Joystick**: 5 pins (`GND`, `+5V` [connect to 3.3V on Pico], `VRX`, `VRY`, `SW`). Dual-axis analog thumbstick with tactile center button.
+10. **Joystick**: 5 pins (`GND`, `+5V` [connect to 3.3V on Pico], `VRX`, `VRY`, `SW`). Dual-axis analog thumbstick with tactile center button. *Used in [`05-ble-game-controller`](./05-ble-game-controller/)*.
 11. **Relay**: 3 pins (`GND`, `VCC` [Connect to Pin 40 / 5V VBUS], `IN`). 1-channel relay for switching external appliances.
 12. **Rotary Encoders** (`KY-040`): 5 pins (`CLK`, `DT`, `SW`, `+`, `GND`). Infinite 360° rotary knob with push button.
 13. **Temp and Humidity** (`DHT11`): 3 pins (`+` [3.3V], `out`/`S` [Signal], `-` [GND]). Digital temperature & humidity sensor. *Used in [`01-wifi-climate-station`](./01-wifi-climate-station/)*.
@@ -79,7 +80,7 @@ This hardware reference documents the sensors, pinouts, and capabilities across 
 36. **GY-521** (`MPU-6050`): 8 pins (`VCC`, `GND`, `SCL`, `SDA`, `XDA`, `XCL`, `AD0`, `INT`). 6-axis accelerometer & gyroscope on I2C.
 
 ### Row 5 (Modules 37 – 45)
-37. **Button** (`KY-004`): 3 pins (`S` [Signal], `+` [3.3V], `-` [GND]). Tactile push button module. *Used in [`02-security-alarm-system`](./02-security-alarm-system/)*.
+37. **Button** (`KY-004`): 3 pins (`S` [Signal], `+` [3.3V], `-` [GND]). Tactile push button module. *Used in [`02-security-alarm-system`](./02-security-alarm-system/) and [`05-ble-game-controller`](./05-ble-game-controller/)*.
 38. **Pulse Rate Monitor** (`KY-039`): 3 pins (`S` [Analog], `+`, `-`). Optical photoplethysmogram pulse sensor.
 39. **SMD RGB** (`KY-009`): 4 pins (`-` [GND], `R`, `G`, `B`). 5050 SMD full-color LED. *Compatible with [`01-wifi-climate-station`](./01-wifi-climate-station/)*.
 40. **TAP Module** (`KY-031`): 3 pins (`S`, middle, `-`). Mechanical tap/knock sensor.
@@ -103,5 +104,5 @@ This hardware reference documents the sensors, pinouts, and capabilities across 
 ### 2. Run with VS Code & MicroPico
 1. Plug your Raspberry Pi Pico W into your computer via a micro-USB data cable.
 2. Ensure the **MicroPico** extension is connected (status bar indicates `Pico Connected`).
-3. Open any project's `main.py` (e.g., [`01-wifi-climate-station/main.py`](./01-wifi-climate-station/main.py), [`02-security-alarm-system/main.py`](./02-security-alarm-system/main.py), [`03-smart-plant-monitor/main.py`](./03-smart-plant-monitor/main.py), or [`04-universal-ir-remote/main.py`](./04-universal-ir-remote/main.py)) and press **`Ctrl+F5`** (or click **Run current file**).
+3. Open any project's `main.py` (e.g., [`01-wifi-climate-station/main.py`](./01-wifi-climate-station/main.py), [`02-security-alarm-system/main.py`](./02-security-alarm-system/main.py), [`03-smart-plant-monitor/main.py`](./03-smart-plant-monitor/main.py), [`04-universal-ir-remote/main.py`](./04-universal-ir-remote/main.py), or [`05-ble-game-controller/main.py`](./05-ble-game-controller/main.py)) and press **`Ctrl+F5`** (or click **Run current file**).
 4. The Pico will connect to your Wi-Fi network and print its IP address in the terminal. Open that IP address in any browser on the same Wi-Fi network!
